@@ -61,9 +61,9 @@ local function run(msg, matches)
             end
         if permissions(msg.from.id, msg.to.id, "id") then
             if msg.to.type == 'channel' then
-                send_msg(msg.to.peer_id, 'SuperGroup ID: '..msg.to.id, ok_cb, false)
+                send_msg(msg.to.peer_id, 'آیدی گروه: '..msg.to.id, ok_cb, false)
             elseif msg.to.type == 'chat' then
-                send_msg(msg.to.peer_id, 'Group ID: '..msg.to.id, ok_cb, false)
+                send_msg(msg.to.peer_id, 'آیدی گروه: '..msg.to.id, ok_cb, false)
             end
         end
 elseif matches[1] == 'id' then
