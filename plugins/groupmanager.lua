@@ -80,7 +80,7 @@ local function run(msg, matches)
     				redis:set(hash, result)
     			end
 	            if success == 0 then
-	                return send_large_msg(receiver, 'Error*\nnewlink not saved\nYou are not the group administrator', ok_cb, true)
+	                return send_large_msg(receiver, 'Error*\nلینک جدید سیو نشده است یا شما مدیر نیستید', ok_cb, true)
 	            end
     		end
     		if msg.to.type == 'chat' then
@@ -90,9 +90,9 @@ local function run(msg, matches)
             end
     		if result then
 	            if msg.to.type == 'chat' then
-	                send_msg('chat#id'..msg.to.id, 'New link created', ok_cb, true)
+	                send_msg('chat#id'..msg.to.id, 'لینک جدید ساخته شد', ok_cb, true)
 	            elseif msg.to.type == 'channel' then
-	                send_msg('channel#id'..msg.to.id, 'New link created', ok_cb, true)
+	                send_msg('channel#id'..msg.to.id, 'لینک جدید ساخته شد', ok_cb, true)
 	            end
 	        end
             return
@@ -105,16 +105,16 @@ local function run(msg, matches)
             local linktext = redis:get(hash)
             if linktext then
                 if msg.to.type == 'chat' then
-                    send_msg('user#id'..msg.from.id, 'Group Link :'..linktext, ok_cb, true)
+                    send_msg('user#id'..msg.from.id, 'لینک گروه :'..linktext, ok_cb, true)
                 elseif msg.to.type == 'channel' then
-                    send_msg('user#id'..msg.from.id, 'SuperGroup Link :'..linktext, ok_cb, true)
+                    send_msg('user#id'..msg.from.id, 'لینک گروه :'..linktext, ok_cb, true)
                 end
-                return 'Link was sent in your pv'
+                return 'لینک در خصوصی خودم ارسال شد :)'
             else
                 if msg.to.type == 'chat' then
-                    send_msg('chat#id'..msg.to.id, 'Error*\nplease send #newlink', ok_cb, true)
+                    send_msg('chat#id'..msg.to.id, 'Error*\nلطفا دستور #newlink را بفرستید', ok_cb, true)
                 elseif msg.to.type == 'channel' then
-                    send_msg('channel#id'..msg.to.id, 'Error*\nplease send #newlink', ok_cb, true)
+                    send_msg('channel#id'..msg.to.id, 'Error*\nلطفا دستور #newlink را بفرستید', ok_cb, true)
                 end
             end
             return
@@ -123,7 +123,7 @@ local function run(msg, matches)
         if msg.to.type == 'chat' then
             if permissions(msg.from.id, msg.to.id, "tosupergroup") then
                 chat_upgrade('chat#id'..msg.to.id, ok_cb, false)
-                return 'Chat Upgraded Successfully.'
+                return 'ارتقا گروه به سوپر گروه با موفقیت انجام شد.'
             end
         else
             return 'Error !'
