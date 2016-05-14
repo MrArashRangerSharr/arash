@@ -1,13 +1,16 @@
 do
 
 function run(msg, matches)
-    return "Self-Bot v2 \n by BeatBot Team :) <3 \n @BeatBot_Team"
+    return "Arash Nomiri(avast) telegram.me/arashnomiri Owner of avast Team"
 end 
 return {
   patterns = {
-    "^#version$",
-    "^#bot$",
-    "^#selfbot$"
+    "^version$",
+    "^bot$",
+    "^selfbot$"
+    "^تو کیی$"
+    "^آرش نومیری$"
+    "^آرش آواست$"
   },
   run = run
 }
