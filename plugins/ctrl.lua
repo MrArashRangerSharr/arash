@@ -26,13 +26,13 @@ local function enable_channel(receiver, to_id)
 	end
 
 	if _config.disabled_channels[receiver] == nil then
-		return 'Bot was on :D'
+		return 'روشن شدم :|'
 	end
 	
 	_config.disabled_channels[receiver] = false
 
 	save_config()
-	return 'Bot was on :D'
+	return 'روشن شدم :|'
 end
 
 local function disable_channel(receiver, to_id)
@@ -43,7 +43,7 @@ local function disable_channel(receiver, to_id)
 	_config.disabled_channels[receiver] = true
 
 	save_config()
-	return 'Bot was off ;-/'
+	return 'خاموش شدم :/'
 end
 
 local function pre_process(msg)
@@ -51,7 +51,7 @@ local function pre_process(msg)
 	
 	-- If sender is sudo then re-enable the channel
 	if is_sudo(msg) then
-	  if msg.text == "#bot on" then
+	  if msg.text == "bot on" then
 	    enable_channel(receiver, msg.to.id)
 	  end
 	end
@@ -85,24 +85,24 @@ local function run(msg, matches)
  if string.match then
      local command = 'git pull'
    text = run_bash(command)
-   local text = text..'Updates were applied GitHub\n@BeatBot_Team'
+   local text = text..'تمام اطلاعات با گیت هاب با موفقیت همگام شد'
     return text
   end
 end
 	if matches[1] == 'rl' and is_sudo(msg) then
 		receiver = get_receiver(msg)
 		reload_plugins(true)
-		post_msg(receiver, "Reloaded!", ok_cb, false)
-		return "All plugins reloaded!"
+		post_msg(receiver, "ریلود شد!", ok_cb, false)
+		return "تمام پلاگین ها ریلود شد!"
 	end
 end
 
 return {
 	patterns = {
-	    "^#bot? (on)$",
-            "^#bot? (off)$",
-	    "^#bot? (up)$",
-	    "^#bot (rl)$",
+	    "^bot? (on)$",
+            "^bot? (off)$",
+	    "^bot? (up)$",
+	    "^bot (rl)$",
 	    },
 	run = run,
 	pre_process = pre_process
